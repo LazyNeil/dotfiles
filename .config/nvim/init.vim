@@ -6,8 +6,15 @@
 "       * Quit and restart Vim, and then
 "       * Run :PlugClean. You will be prompted to delete the directory, type Y.
 "
+"   you may need to install ctags | example on arch > paru -S universal-ctags
+
+"" Execute on start
+" set transparent background
+"autocmd vimenter * highlight Normal ctermbg=NONE
 
 "" Options
+" ... general settings
+set signcolumn=yes
 " show the numbers on the left
 set number
 " show relative numbers from the cursor line
@@ -24,8 +31,6 @@ set expandtab
 :set softtabstop=4
 " enable mouse (a for all the features)
 :set mouse=a
-" do not save backup files.
-"set nobackup
 " set the commands to save in history default number is 20.
 set history=1000
 " ignore capital letters during search.
@@ -35,31 +40,38 @@ set ignorecase
 set smartcase
 " show partial command you type in the last line of the screen.
 set showcmd
-" show the mode you are on the last line.
-"set showmode
+" hide the mode (insert, normal, view).
+set noshowmode
 " show matching words during a search.
 set showmatch
 " use highlighting when doing a search.
 set hlsearch
 
-"" Plugin's
+"" Plugin'sPlug 'nvim-lua/plenary.nvim'
 " plugin's directory
 call plug#begin('~/.local/share/nvim/plugged')
-	Plug 'http://github.com/tpope/vim-surround' " Surrounding like () & <p>
 	Plug 'https://github.com/preservim/nerdtree' " NerdTree
-	Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-	Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 	Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 	Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
-	Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
-	Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 	Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
-	Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-" stop reading plugins
+    Plug 'https://github.com/nvim-lua/plenary.nvim' " Git deco LUA dependency
+    Plug 'https://github.com/lewis6991/gitsigns.nvim' " Git decorations
+    Plug 'http://github.com/tpope/vim-surround' " Surrounding like () & <p>
+    Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
+    Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
+    Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+    Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
+    Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+    " stop reading plugins
 call plug#end()
+
+" Init lua plugins
+lua require("init")
 
 "" Config & Mapping
 "" TODO: add more mapping keys
+
+" move lines in any mode
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
@@ -67,6 +79,17 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" set colorscheme after load
-colorscheme gruvbox
+" open tagbar
+nmap <F8> :TagbarToggle<CR>
+" open nerdtree
+nnoremap <C-e> :NERDTreeToggle<CR>
 
+" comment hotkeys
+
+" surrounding hotkeys
+
+" set colorscheme after load
+colorscheme purify
+
+" clean the hi color of the side
+highlight clear signcolumn
