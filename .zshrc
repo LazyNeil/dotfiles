@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # config alias and ls
 alias ls='ls --color=auto'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
-
+alias vim='nvim'
 # colors
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
