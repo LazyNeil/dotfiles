@@ -1,5 +1,5 @@
 "" Help
-"   remember to exec :PlugInstall and close it with q
+"   Note: remember to exec :PlugInstall and close it with q
 "
 "   If you want to delete a plugin:
 "       * Remove the line from your config,
@@ -46,6 +46,7 @@ set noshowmode
 set showmatch
 " use highlighting when doing a search.
 set hlsearch
+let g:airline_theme='tomorrow'
 
 "" Plugin'sPlug 'nvim-lua/plenary.nvim'
 " plugin's directory
@@ -62,12 +63,14 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
     Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
     Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+    Plug 'vim-airline/vim-airline-themes'
     " stop reading plugins
 call plug#end()
 
 " Init lua plugins
 lua require("init")
 
+let g:airline_theme='tomorrow'
 "" Config & Mapping
 "" TODO: add more mapping keys
 
@@ -85,6 +88,7 @@ nmap <F8> :TagbarToggle<CR>
 nnoremap <C-e> :NERDTreeToggle<CR>
 
 " comment hotkeys
+let g:airline_theme='tomorrow'
 
 " surrounding hotkeys
 
@@ -93,3 +97,38 @@ colorscheme purify
 
 " clean the hi color of the side
 highlight clear signcolumn
+
+"" Airline (status bar)
+" Note: You must define the dictionary first before setting values.
+" Also, it's a good idea to check whether it exists as to avoid 
+" accidentally overwriting its contents.
+let g:airline_theme='fairyfloss'
+
+let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+
+" ~/full/path-to/file-name.js
+let g:airline#extensions#tabline#formatter = 'default'  " f/p/file-name.js
+let g:airline#extensions#tabline#formatter = 'jsformatter' " path-to/f
+let g:airline#extensions#tabline#formatter = 'unique_tail' " file-name.js
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " f/p/file-name.js
+
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ' '
+let g:airline_symbols.linenr = '☰ '
+let g:airline_symbols.maxlinenr = ' '
+let g:airline_symbols.dirty='⚡'
+
+" If you only see boxes here it may be because your system doesn't have
+" the correct fonts. Try it in vim first and if that fails see the help 
+" pages for vim-airline :help airline-troubleshooting
+
