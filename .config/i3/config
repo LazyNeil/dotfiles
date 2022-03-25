@@ -220,7 +220,8 @@ smart_borders on
 smart_borders no_gaps
 
 # transparency
-exec picom -b --config .config/picom.conf --backend glx
+# exec picom -b --config .config/picom.conf --backend glx
+exec picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil
 
 # background wallpaper
 exec sh /home/neil/.fehbg
