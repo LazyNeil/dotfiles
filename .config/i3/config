@@ -4,6 +4,8 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
+# show keycodes in a terminal
+# xev -event keyboard | egrep -o 'keycode.*\)'
 
 # i3 config file (v4)
 #
@@ -49,6 +51,10 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty
+
+# floating terminal
+bindsym $mod+Shift+Return exec kitty --class floating_term
+for_window [class=floating_term] floating enable, resize shrink height 300
 
 # kill focused window
 bindsym $mod+Shift+q kill
