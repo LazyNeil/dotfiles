@@ -134,8 +134,8 @@ set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: "
 set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6: "
+set $ws5 "5: "
+set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: "
 set $ws9 "9: "
@@ -146,7 +146,9 @@ assign [instance="(?i)kitty"] $ws1
 assign [instance="(?i)navigator"] $ws2
 assign [class="(?i)code"] $ws3
 assign [instance="(?i)discord"] $ws4
-assign [instance="(?i)blender"] $ws5
+assign [class="(?i)steam"] $ws5
+assign [class="(?i)heroic"] $ws5
+assign [instance="(?i)blender"] $ws6
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
