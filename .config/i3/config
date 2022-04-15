@@ -54,7 +54,7 @@ bindsym $mod+Return exec kitty
 
 # floating terminal
 bindsym $mod+Shift+Return exec kitty --class floating_term
-for_window [class=floating_term] floating enable, resize grow 10000,resize shrink height 300
+for_window [class=floating_term] floating enable, resize set 900 500
 
 # kill focused window
 bindsym $mod+Shift+q kill
